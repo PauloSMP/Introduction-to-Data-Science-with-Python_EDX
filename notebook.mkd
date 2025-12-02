@@ -1,4 +1,129 @@
-### Notebook for linear regression module - CS109X
+# Notebook for linear regression module - CS109X
+
+
+# Model Training and Optimization
+
+## 1. What Does “Training a Model” Mean?
+
+When we train (or fit) a model, we are choosing parameter values that make the model’s predictions as good as possible on the data.
+
+- A **model** is a rule that takes inputs (features) and produces an output (a prediction).  
+- The model has internal **parameters** (knobs) that control how it behaves.  
+- A **loss function** is a number that tells us how bad the predictions are (larger means worse).  
+- **Optimization** is the process of adjusting the parameters until the loss is as small as we can reasonably get it.
+
+In short, **training a model = using an optimization method to find parameter values that give low loss on our data**.
+
+---
+
+## 2. Components of the Optimization Problem
+
+When we talk about “optimizing a model,” we always have these pieces:
+
+- **Model**: The functional form that maps inputs to outputs  
+  *(e.g., linear model, decision tree, neural network).*  
+- **Parameters**: The quantities inside the model that we learn from data  
+  *(e.g., weights, biases, tree splits).*  
+- **Loss function**: A numerical measure of prediction error  
+  *(e.g., mean squared error, cross‑entropy).*  
+- **Search space**: All parameter values the optimizer is allowed to explore.
+
+**Goal:** choose parameter values that make the loss as small as possible on the training data.
+
+---
+
+## 3. Families of Optimization Strategies
+
+### 3.1 Exhaustive / Grid Search (Enumeration)
+
+**Idea**
+
+- Define a grid of possible parameter values.  
+- Compute the loss for every point on this grid.  
+- Pick the combination that has the smallest loss.
+
+**Pros**
+
+- Very easy to understand and implement.  
+- Works when there are only a few parameters and each has a small, bounded range.
+
+**Cons**
+
+- Scales poorly as the number of parameters or grid resolution increases.  
+- Used mostly for **hyperparameter tuning** (e.g., k in kNN, tree depth), not for internal weights of large models.
+
+---
+
+### 3.2 Analytic / Closed‑Form Solutions
+
+**Idea**
+
+- For some model + loss combinations, you can derive an exact mathematical formula for the best parameters.  
+- This is usually done by setting derivatives of the loss to zero and solving the resulting equations.
+
+**Pros**
+
+- Exact and fast when available.  
+- Often numerically stable and simple to implement.
+
+**Cons**
+
+- Only works for special cases  
+  *(e.g., ordinary least squares with a quadratic loss).*  
+- Not applicable to most modern models  
+  *(trees, ensembles, deep neural networks, complex regularization, etc.).*
+
+---
+
+### 3.3 Iterative Numerical Optimization
+
+**Idea**
+
+- Start from an initial guess for the parameters.  
+- Repeatedly update the parameters to reduce the loss step by step.
+
+**Common methods**
+
+- **First‑order methods** (use gradients):  
+  - Gradient Descent  
+  - Stochastic Gradient Descent (SGD)  
+  - Mini‑batch SGD and variants (Momentum, Adam, RMSProp, etc.)
+
+- **Second‑order or quasi‑Newton methods** (use gradient + curvature information):  
+  - Newton’s Method  
+  - BFGS / L‑BFGS
+
+**Pros**
+
+- Scales to high‑dimensional parameter spaces.  
+- Works for many differentiable models and loss functions.
+
+**Cons**
+
+- For non‑convex problems usually finds a good local optimum, not guaranteed to be globally best.  
+- Requires hyperparameters (learning rate, batch size, number of iterations) that must themselves be chosen and tuned.
+
+---
+
+### 3.4 Heuristic and Meta‑Heuristic Search
+
+**Idea**
+
+- Treat the optimization problem as a black box without assuming smoothness or gradients.  
+- Use general search strategies to explore the parameter space.
+
+**Examples**
+
+- Random Search  
+- Bayesian Optimization  
+- Evolutionary Algorithms  
+- Simulated Annealing
+
+**Typical use cases**
+
+- Hyperparameter optimization for complex models where gradients are not available or are too expensive to compute.  
+- Situations where the loss is noisy, non‑smooth, or very costly to evaluate, making gradient‑based methods hard to apply directly.
+
 
 
 
