@@ -1,0 +1,40 @@
+## Modeling Complex Problems: Polynomial Regression vs Neural Networks
+
+### Polynomial Regression / Response Surface Models
+
+**Pros:**
+- Simple, interpretable mathematical form; coefficients directly show effect of each variable and interaction.
+- Efficient for fitting and optimizing with small, structured experimental designs (DOE).
+- Well-suited for problems where relationships are smooth and locally quadratic.
+
+**Cons:**
+- Limited flexibility for highly non-linear or multi-modal systems; may miss complex interactions present in real HPLC data.
+- Number of model terms grows rapidly with more factors and higher-order polynomials, making estimation difficult and prone to overfitting.
+- Extrapolates poorly outside the experimental design space; predictions can be unrealistic.
+- May suffer from multicollinearity and coefficient instability.
+
+---
+
+### Neural Network Models
+
+**Pros:**
+- Capable of modeling complex, non-linear, and multi-factor interactions often observed in advanced HPLC method development.
+- Naturally handle large numbers of inputs and interactions without manual feature specification.
+- Flexible enough to capture arbitrary functional forms if enough data is available.
+- Can outperform polynomial models on large, high-quality datasets due to richer representation.
+
+**Cons:**
+- Require large and diverse datasets to train well; performance drops if experimental coverage is thin.
+- More difficult to interpret than polynomial regression ("black box" behavior).
+- More computationally intensive and require careful regularization/tuning to avoid overfitting.
+- Regulatory agencies and many scientists are less familiar with ML techniques than classical DOE responses.
+
+---
+
+**Summary:**  
+Polynomial and response surface models are preferred for small, well-structured experimental designs because they are efficient and interpretable. However, for modeling complex systems (like HPLC optimization with intricate non-linearities and higher-order interactions), neural networks and other ML approaches offer greater flexibility and predictive power—especially given enough high-quality data from DOE or exploratory experiments.
+
+
+For more information please read
+- **Book**: An Introduction to Statistical Learning.
+- **Section**: 7.1 Polynomial Regression.
