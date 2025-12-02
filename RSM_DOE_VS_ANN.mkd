@@ -36,5 +36,5 @@ Polynomial and response surface models are preferred for small, well-structured 
 
 
 For more information please read
-- **Book**: An Introduction to Statistical Learning.
+- **Book**: An Introduction to Statistical Learning - pag 290.
 - **Section**: 7.1 Polynomial Regression.
